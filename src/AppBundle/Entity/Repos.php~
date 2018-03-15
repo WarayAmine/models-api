@@ -1,0 +1,66 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Repos
+ *
+ * @ORM\Table(name="repos")
+ * @ORM\Entity
+ */
+class Repos
+{
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="founder", type="string", length=255, nullable=false)
+     */
+    private $founder;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="number_commits", type="integer", nullable=true)
+     */
+    private $numberCommits;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="first_commit", type="datetime", nullable=true)
+     */
+    private $firstCommit;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="last_commit", type="datetime", nullable=true)
+     */
+    private $lastCommit;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+
+}

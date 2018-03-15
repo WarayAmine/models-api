@@ -1,0 +1,15 @@
+api:
+    resource: '.'
+    type: 'api_platform'
+
+app:
+    resource: '@AppBundle/Action/'
+    type: 'annotation'
+
+umlFilesWithOutProperty:
+    path: '/umlFilesWithOut/{property}'
+    methods: ['GET']
+    defaults:
+        _controller: 'AppBundle:UmlFiles:umlFilesWithNotProperty'
+        _api_resource_class: 'AppBundle\Entity\Umlfiles'
+        _api_collection_operation_name: 'umlFilesWithNotProperty'

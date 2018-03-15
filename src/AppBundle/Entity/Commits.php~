@@ -1,0 +1,59 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commits
+ *
+ * @ORM\Table(name="commits")
+ * @ORM\Entity
+ */
+class Commits
+{
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="gh_id", type="string", length=255, nullable=true)
+     */
+    private $ghId;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="people_id", type="integer", nullable=true)
+     */
+    private $peopleId;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="commit_date", type="datetime", nullable=true)
+     */
+    private $commitDate;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="cochanged", type="integer", nullable=true)
+     */
+    private $cochanged;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="repos_id", type="integer", nullable=true)
+     */
+    private $reposId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+
+}
