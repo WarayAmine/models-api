@@ -12,11 +12,12 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Table(name="umlfiles")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UmlFilesRepository")
  * @ApiResource(
- *     collectionOperations = {
+ *     itemOperations = {
  *          "get" = { "method" = "GET" },
- *          "post" = { "method" = "POST" },
- *          "umlFilesWithNotProperty" = {
- *              "route_name" = "umlFilesWithOutProperty",
+ *          "put" = { "method" = "PUT"},
+ *          "delete" = { "method" = "DELETE"},
+ *          "oneUmlFileWithoutProperty" = {
+ *              "route_name" = "oneUmlFileWithoutProperty",
  *              "method" = "GET",
  *              "swagger_context" = {
  *                  {
@@ -32,7 +33,30 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *                  "application/json"
  *              }
  *          }
- *      }
+ *     },
+ *     collectionOperations = {
+ *          "get" = { "method" = "GET" },
+ *          "post" = { "method" = "POST" },
+ *          "umlFileWithProperty"={
+ *              "route_name"="umlFilesWithProperty",
+ *              "method" = "GET",
+ *              "swagger_context" = {
+ *                  "parameters" = {
+ *                     {
+ *                          "name" = "id",
+ *                          "required" = true,
+ *                          "type" = "string",
+ *                          "in" = "path",
+ *                          "description" = "property id"
+ *                      }
+ *                  },
+ *                  "produces" = {
+ *                      "application/ld+json",
+ *                      "application/json"
+ *                  }
+ *              }
+ *          }
+ *     }
  * )
  */
 class Umlfiles

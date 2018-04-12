@@ -10,13 +10,27 @@ use Symfony\Component\HttpFoundation\Response;
 class UmlFilesController extends Controller
 {
 
-    public function umlFilesWithNotPropertyAction(  $property){
-        $oneProperty =
+    public function oneUmlFileWithoutPropertyAction($property){
+        $umlFile =
             $this->getDoctrine()
                 ->getRepository(Umlfiles::class)
-                ->getUmlFilesWithNotProperty($property);
+                ->getOneUmlFileWithoutProperty($property);
 
 
-       return $oneProperty;
+       return $umlFile;
     }
+
+
+
+    public function umlFileWithPropertyAction($property){
+        $umlFiles =
+            $this->getDoctrine()
+                ->getRepository(Umlfiles::class)
+                ->getUmlFileWithProperty($property);
+
+      //  var_dump($umlFiles);
+
+        return $umlFiles;
+    }
+
 }

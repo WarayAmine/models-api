@@ -11,18 +11,34 @@ namespace AppBundle\Repository;
 
 class UmlFilesRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getUmlFilesWithNotProperty($property){
-        $sql = ' 
+    public function getOneUmlFileWithoutProperty($property){
+        $sql = " 
                 SELECT u.*
                 FROM umlfiles u
                 WHERE u.id NOT IN
                 (SELECT up.uml_file_id
                 FROM uml_file_propertie up
-                WHERE up.property_id = ".$property.")
+                WHERE up.property_id = '".$property."')
                 LIMIT 1
-        ';
+        ";
 
 
         return $this->getEntityManager()->getConnection()->executeQuery($sql)->fetchAll();
     }
+
+    public function getUmlFileWithProperty($property){
+        $sql = "
+                SELECT u.*
+                FROM umlfiles u
+                WHERE u.id IN
+                (SELECT up.uml_file_id
+                FROM uml_file_propertie up
+                WHERE up.property_id = '".$property."')
+        ";
+
+        return   $this->getEntityManager()->getConnection()->executeQuery($sql)->fetchAll();
+
+    }
+
+
 }

@@ -9,9 +9,36 @@ use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * UmlFilePropertie
  *
- * @ApiResource
  * @ORM\Table(name="uml_file_propertie")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UmlFilePropertieRepository")
+ * @ApiResource(
+ *
+ *     collectionOperations = {
+ *          "get" = { "method" = "GET" },
+ *          "post" = { "method" = "POST" },
+ *          "umlFileProperties"={
+ *              "route_name"="umlFileProperties",
+ *              "method" = "GET",
+ *              "swagger_context" = {
+ *                  "parameters" = {
+ *                     {
+ *                          "name" = "umlFile",
+ *                          "required" = true,
+ *                          "type" = "string",
+ *                          "in" = "path",
+ *                          "description" = "UmlFile id"
+ *                      }
+ *                  },
+ *                  "produces" = {
+ *                      "application/ld+json",
+ *                      "application/json"
+ *                  }
+ *              }
+ *          }
+ *     }
+ *
+ * )
+
  */
 class UmlFilePropertie
 {

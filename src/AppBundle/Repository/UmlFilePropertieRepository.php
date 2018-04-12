@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class UmlFilePropertieRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getUmlFileProperties($umlFile)
+    {
+
+        $sql = "
+                SELECT up.*
+                FROM uml_file_propertie up
+                WHERE up.uml_file_id = '".$umlFile."'";
+
+        return   $this->getEntityManager()->getConnection()->executeQuery($sql)->fetchAll();
+    }
 }

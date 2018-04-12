@@ -6,10 +6,28 @@ app:
     resource: '@AppBundle/Action/'
     type: 'annotation'
 
-umlFilesWithOutProperty:
-    path: '/umlFilesWithOut/{property}'
+oneUmlFileWithoutProperty :
+    path: '/oneUmlFileWithoutProperty/{property}'
     methods: ['GET']
     defaults:
-        _controller: 'AppBundle:UmlFiles:umlFilesWithNotProperty'
+        _controller: 'AppBundle:UmlFiles:oneUmlFileWithoutProperty'
         _api_resource_class: 'AppBundle\Entity\Umlfiles'
-        _api_collection_operation_name: 'umlFilesWithNotProperty'
+        _api_collection_operation_name: 'oneUmlFileWithoutProperty'
+
+umlFilesWithProperty :
+    path: '/umlFileWithProperty/{property}'
+    methods: ['GET']
+    defaults:
+        _controller: 'AppBundle:UmlFiles:umlFileWithProperty'
+        _api_resource_class: 'AppBundle\Entity\Umlfiles'
+        _api_collection_operation_name: 'umlFileWithProperty'
+
+umlFileProperties :
+    path: '/umlFileProperties/{umlFile}'
+    methods: ['GET']
+    defaults:
+        _controller: 'AppBundle:UmlFilePropertie:umlFileProperties'
+        _api_resource_class: 'AppBundle\Entity\UmlFilePropertie'
+        _api_collection_operation_name: 'umlFileProperties'
+
+
