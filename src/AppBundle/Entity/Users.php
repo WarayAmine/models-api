@@ -3,12 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+
 
 /**
  * Users
  *
  * @ORM\Table(name="users")
  * @ORM\Entity
+ * @ApiResource(
+ *     attributes={"pagination_items_per_page"=30}
+ * )
  */
 class Users
 {
@@ -115,6 +120,7 @@ class Users
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 

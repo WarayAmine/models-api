@@ -3,12 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+
 
 /**
  * Commits
  *
  * @ORM\Table(name="commits")
  * @ORM\Entity
+ * @ApiResource(
+ *     attributes={"pagination_items_per_page"=30}
+ * )
  */
 class Commits
 {
@@ -22,9 +27,9 @@ class Commits
     /**
      * @var int|null
      *
-     * @ORM\Column(name="people_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\People")
      */
-    private $peopleId;
+    private $people;
 
     /**
      * @var \DateTime|null
@@ -43,15 +48,16 @@ class Commits
     /**
      * @var int|null
      *
-     * @ORM\Column(name="repos_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Repos")
      */
-    private $reposId;
+    private $repos;
 
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -84,13 +90,13 @@ class Commits
     /**
      * Set peopleId.
      *
-     * @param int|null $peopleId
+     * @param int|null $people
      *
      * @return Commits
      */
-    public function setPeopleId($peopleId = null)
+    public function setPeople($people = null)
     {
-        $this->peopleId = $peopleId;
+        $this->people = $people;
 
         return $this;
     }
@@ -100,9 +106,9 @@ class Commits
      *
      * @return int|null
      */
-    public function getPeopleId()
+    public function getPeople()
     {
-        return $this->peopleId;
+        return $this->people;
     }
 
     /**
@@ -156,13 +162,13 @@ class Commits
     /**
      * Set reposId.
      *
-     * @param int|null $reposId
+     * @param int|null $repos
      *
      * @return Commits
      */
-    public function setReposId($reposId = null)
+    public function setRepos($repos = null)
     {
-        $this->reposId = $reposId;
+        $this->repos = $repos;
 
         return $this;
     }
@@ -172,9 +178,9 @@ class Commits
      *
      * @return int|null
      */
-    public function getReposId()
+    public function getRepos()
     {
-        return $this->reposId;
+        return $this->repos;
     }
 
     /**

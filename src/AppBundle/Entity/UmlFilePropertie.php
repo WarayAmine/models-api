@@ -12,7 +12,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Table(name="uml_file_propertie")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UmlFilePropertieRepository")
  * @ApiResource(
- *
+ *     attributes={"pagination_items_per_page"=30},
  *     collectionOperations = {
  *          "get" = { "method" = "GET" },
  *          "post" = { "method" = "POST" },

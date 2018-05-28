@@ -33,4 +33,13 @@ class UmlFilesController extends Controller
         return $umlFiles;
     }
 
+    public function xmiFilesAction(){
+        $umlFiles =
+            $this->getDoctrine()
+                ->getRepository(Umlfiles::class)
+                ->getXmiFiles();
+
+        return $umlFiles;
+    }
+
 }

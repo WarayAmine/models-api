@@ -4,12 +4,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+
 
 
 /**
  * Property
  *
- * @ApiResource
+ * @ApiResource(
+ *     attributes={"pagination_items_per_page"=30}
+ *     )
  * @ORM\Table(name="property")
  * @ORM\Entity
  */
@@ -42,6 +46,15 @@ class Property
      * @var string
      *
      * @ORM\Column(name="dataType", type="string", columnDefinition="ENUM('integer', 'text')")
+     * @ApiProperty(
+     *     attributes={
+     *         "swagger_context"={
+     *             "type"="string",
+     *             "enum"={"text", "integer"},
+     *             "example"="text"
+     *         }
+     *     }
+     * )
      */
     private $dataType;
 

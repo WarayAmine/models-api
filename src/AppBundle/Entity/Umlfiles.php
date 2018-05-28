@@ -12,6 +12,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Table(name="umlfiles")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UmlFilesRepository")
  * @ApiResource(
+ *     attributes={"pagination_items_per_page"=30},
  *     itemOperations = {
  *          "get" = { "method" = "GET" },
  *          "put" = { "method" = "PUT"},
@@ -55,6 +56,16 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *                      "application/json"
  *                  }
  *              }
+ *          },
+ *          "getXmiFiles"={
+ *              "route_name"="xmiFiles",
+ *              "method" = "GET",
+ *              "swagger_context" = {
+ *                  "produces" = {
+ *                      "application/ld+json",
+ *                      "application/json"
+ *                  }
+ *              }
  *          }
  *     }
  * )
@@ -78,22 +89,16 @@ class Umlfiles
     /**
      * @var int|null
      *
-     * @ORM\Column(name="commits_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Commits")
      */
-    private $commitsId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="repo_id", type="integer", nullable=true)
-     */
-    private $repoId;
+    private $commits;
 
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -150,13 +155,13 @@ class Umlfiles
     /**
      * Set commitsId.
      *
-     * @param int|null $commitsId
+     * @param int|null $commits
      *
      * @return Umlfiles
      */
-    public function setCommitsId($commitsId = null)
+    public function setCommits($commits = null)
     {
-        $this->commitsId = $commitsId;
+        $this->commits = $commits;
 
         return $this;
     }
@@ -166,34 +171,11 @@ class Umlfiles
      *
      * @return int|null
      */
-    public function getCommitsId()
+    public function getCommits()
     {
-        return $this->commitsId;
+        return $this->commits;
     }
 
-    /**
-     * Set repoId.
-     *
-     * @param int|null $repoId
-     *
-     * @return Umlfiles
-     */
-    public function setRepoId($repoId = null)
-    {
-        $this->repoId = $repoId;
-
-        return $this;
-    }
-
-    /**
-     * Get repoId.
-     *
-     * @return int|null
-     */
-    public function getRepoId()
-    {
-        return $this->repoId;
-    }
 
     /**
      * Set id.

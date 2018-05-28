@@ -40,5 +40,15 @@ class UmlFilesRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function getXmiFiles(){
+        $sql = "
+                SELECT u.*
+                FROM umlfiles u
+                WHERE url LIKE '%.xmi'
+        ";
+
+        return   $this->getEntityManager()->getConnection()->executeQuery($sql)->fetchAll();
+    }
+
 
 }

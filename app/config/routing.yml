@@ -30,4 +30,10 @@ umlFileProperties :
         _api_resource_class: 'AppBundle\Entity\UmlFilePropertie'
         _api_collection_operation_name: 'umlFileProperties'
 
-
+xmiFiles :
+    path: '/xmiFiles'
+    methods: ['GET']
+    defaults:
+        _controller: 'AppBundle:UmlFiles:xmiFiles'
+        _api_resource_class: 'AppBundle\Entity\Umlfiles'
+        _api_collection_operation_name: 'xmiFiles'
